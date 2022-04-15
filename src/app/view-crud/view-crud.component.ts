@@ -67,15 +67,15 @@ change(){
     this.userdata = { ...user };
     this.userDialog = true;
   }
-  // saveuser() {
-  //   this.userDialog = false;
-  //   if (this.userdata.id) {
-  //     this.userpost[this.findIndexById(this.userdata.id)] = this.userdata; 
-  //   } else {
-  //     this.addUserData()
-  //   }
+  saveuser() {
+    this.userDialog = false;
+    if (this.userdata.id) {
+      this.userpost[this.findIndexById(this.userdata.id)] = this.userdata; 
+    } else {
+      this.addUserData()
+    }
 
-  // }
+  }
 
 
   
@@ -105,31 +105,31 @@ change(){
       }
     });
   }
-  update(){
+//   update(){
    
-    const ausers: any = {
-      "id": this.userdata.id,
-      "user_id": this.userdata.user_id,
-      "title": this.userdata.title,
-      "body": this.userdata.body,
-    }
-   console.log(ausers)
-    this.http.put(`${environment.postApi}`,ausers,this.httpOptions).subscribe((res:any)=>{
-      console.log("res",res)
-      this.userpost = res 
-      this.getAllItem()
-console.log("hello")
-    })
-  }
-  saveuser() {
-    debugger
-      this.userDialog = false;
+//     const ausers: any = {
+//       "id": this.userdata.id,
+//       "user_id": this.userdata.user_id,
+//       "title": this.userdata.title,
+//       "body": this.userdata.body,
+//     }
+//    console.log(ausers)
+//     this.http.put(`${environment.postApi}`,ausers,this.httpOptions).subscribe((res:any)=>{
+//       console.log("res",res)
+//       this.userpost = res 
+//       this.getAllItem()
+// console.log("hello")
+//     })
+//   }
+  // saveuser() {
+  //   debugger
+  //     this.userDialog = false;
     //   if (this.userdata.id) {
     //     this.update()
     //     console.log("kaju")
     //   } else {
     //     this.addUserData()
     //   }
-    this.update()
-}
+    // this.update()
+// }
 }
