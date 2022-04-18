@@ -117,14 +117,17 @@ export class UserCrudComponent implements OnInit {
     this.userDialog = false;
     this.submitted = false;
   }
-  deleteuser(user: any) {
+  deleteuser(id: any) {
+    debugger
+    console.log("user",id)
     this.confirmationService.confirm({
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.users = this.users.filter((val: any) => val.id !== user.id);
-        // this.user = {};
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+        this.http.delete(`${environment.apiEndPoint}/${id}`, this.httpOptions).subscribe((res: any) => {
+          this.users = this.users.filter((val: any) => val.id !== id.id);
+      this.getUser()
+        })
       }
     });
   }
@@ -136,3 +139,14 @@ export class UserCrudComponent implements OnInit {
   })
   }
 }
+// deleteuser(user: any) {
+//   this.confirmationService.confirm({
+//     header: 'Confirm',
+//     icon: 'pi pi-exclamation-triangle',
+//     accept: () => {
+//       this.users = this.users.filter((val: any) => val.id !== user.id);
+//       // this.user = {};
+//       this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+//     }
+//   });
+// }
